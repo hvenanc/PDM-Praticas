@@ -1,6 +1,8 @@
 package pdm.weatherapp
 
 import android.app.Activity
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP
 import android.graphics.Paint.Align
 import android.os.Bundle
 import android.widget.Toast
@@ -97,6 +99,11 @@ fun LoginPage(modifier: Modifier = Modifier) {
             Button(
                 onClick = {
                     Toast.makeText(activity, "Login OK!", Toast.LENGTH_LONG).show()
+                    activity?.startActivity(
+                        Intent(activity, HomeActivity::class.java).setFlags(
+                            FLAG_ACTIVITY_SINGLE_TOP
+                        )
+                    )
                 },
                 enabled = email.isNotEmpty() && senha.isNotEmpty()
             ) {
